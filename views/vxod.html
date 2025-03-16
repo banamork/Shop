@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заголовок страницы</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta property="og:title" content="Заголовок страницы в OG">
+    <meta property="og:description" content="Описание страницы в OG">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+  </head>
+  <body>
+      <script src="server.js"></script>
+      <script>
+          async function checkUsernameUsersExists(name) {
+              try {
+                  const response = await fetch('/check-username-users', {
+                      method: 'POST', // HTTP метод
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ name: name }), // отправляем имя пользователя на сервер
+                  });
+
+                  if (!response.ok) {
+                      throw new Error('Сетевая ошибка');
+                  }
+
+                  const data = await response.json();
+
+                  if (data.exists) {
+                      console.log("Данные найдены");
+                      // Переход на страницу profile.html
+                      localStorage.setItem('username', name);
+                      window.location.href = 'profile.html';
+                  } else {
+                      console.log("Данные не найдены");
+                  }
+              } catch (error) {
+                  console.error('Ошибка при выполнении запроса', error);
+              }
+          }
+      </script>
+      <header>
+          <!--Это шапка сайта-->
+          <h1>
+              ASTRO COMPUTERS
+              <button onclick="location.href='main.html'">
+                  Главная
+              </button>
+              <div class="dropdown">
+                  <button onclick="myFunction()" class="dropbtn">
+                      Категории
+                      <div id="myDropdown" class="dropdown-content">
+                          <!--Ты вроде и не обещал перехода по категориям, так что можно оставить всё так-->
+                          <a href="main.html">Видеокарты</a>
+                          <a href="main.html">Вентиляторы</a>
+                          <a href="main.html">Адаптеры</a>
+                          <a href="main.html">Приводы</a>
+                      </div>
+                  </button>
+              </div>
+              <button onclick="location.href='korzina.html'">
+                  Корзина
+              </button>
+              <button onclick="location.href='profile.html'">
+                  Профиль
+              </button>
+          </h1>
+
+      </header>
+      <main>
+          <div class="rectangle">
+
+              <ul>
+                  <li>
+                      <label for="name">Имя:*</label>
+                      <input type="text" name="name" placeholder="Иван Иванов" id="name" required>
+                  </li>
+                  <li>
+                      <label for="password">Пароль:*</label>
+                      <input type="text" name="password" placeholder="-" id="password" required>
+                  </li>
+              </ul>
+              <button onclick="checkUsernameUsersExists(document.getElementById('name').value)" style="width: 250px; margin: 20px; background: #1052a1;">
+                  Готово
+              </button>
+              <a href="reg.html" style="">Регистрация</a><p></p>
+              <a href="vxod_str.html">Вход для сотрудников</a>
+          </div>
+      </main>
+      <footer>
+      </footer>
+      <!-- сюда можно подключить jquery <script src="scripts/app.js" defer></script> -->
+  </body>
+</html>

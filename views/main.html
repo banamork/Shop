@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta property="og:title" content="Заголовок страницы в OG">
+    <meta property="og:description" content="Описание страницы в OG">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+</head>
+<body>
+    <script src="server.js"></script>
+    <header>
+        <!--РС‚Рѕ С€Р°РїРєР° СЃР°Р№С‚Р°-->
+        <h1>
+            ASTRO COMPUTERS
+            <button onclick="location.href='main.html'">
+                Главная
+            </button>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">
+                    Категории
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="main.html">Видеокарты</a>
+                        <a href="main.html">Вентиляторы</a>
+                        <a href="main.html">Адаптеры</a>
+                        <a href="main.html">Приводы</a>
+                    </div>
+                </button>
+            </div>
+            <button onclick="location.href='korzina.html'">
+                Корзина
+            </button>
+            <button onclick="location.href='profile.html'">
+                Профиль
+            </button>
+        </h1>
+
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th width="15%">Наименование товара</th>
+                <th width="15%">Цена</th>
+                <th width="12%">Описание</th>
+                <th width="13%">Производитель</th>
+                <th width="15%">Поставщик</th>
+                <th width="15%">Категория</th>
+                <th width="30%">Купить</th>
+            </tr>
+            <tbody id="table-body">
+                <tr>
+                    <td colspan="6">Загрузка...</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            // Функция для загрузки данных с сервера
+            async function loadTableData() {
+                try {
+                    const response = await fetch('http://localhost:3000/api/goods');
+                    const data = await response.json();
+
+                    const tableBody = document.getElementById('table-body');
+                    tableBody.innerHTML = ''; // Очистка таблицы
+
+                    if (data.length > 0) {
+                        data.forEach(row => {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                          <td>${row.name}</td>
+                                          <td>${row.sell_price}</td>
+                                          <td>${row.width}</td>
+                                          <td>${row.manufacturer}</td>
+                                          <td>${row.company}</td>
+                                          <td>${row.id_category}</td>
+                                          <td>
+                                              <button onclick="addToCart('${row.id}', '${row.name}', ${row.sell_price}, '${row.width}', '${row.manufacturer}', '${row.company}', ${row.id_category})" style="background-color: #f89b0b;">
+                                                  В корзину
+                                              </button>
+                                          </td>
+                                      `;
+                            tableBody.appendChild(tr);
+                        });
+                    } else {
+                        tableBody.innerHTML = `
+                                      <tr>
+                                          <td colspan="7">Нет данных</td>
+                                      </tr>
+                                  `;
+                    }
+                } catch (error) {
+                    console.error('Ошибка при загрузке данных:', error);
+                    document.getElementById('table-body').innerHTML = `
+                                  <tr>
+                                      <td colspan="7">Ошибка загрузки данных</td>
+                                  </tr>
+                              `;
+                }
+            }
+
+            // Функция для добавления товара в корзину
+            function addToCart(id, name, sell_price, width, manufacturer, company, id_category) {
+                const item = {
+                    id: id,
+                    name: name,
+                    sell_price: sell_price,
+                    width: width,
+                    manufacturer: manufacturer,
+                    company: company,
+                    id_category: id_category
+                };
+
+                // Получаем текущую корзину из localStorage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Добавляем товар в корзину
+                cart.push(item);
+
+                // Сохраняем обновленную корзину в localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Переход на страницу корзины
+                window.location.href = 'korzina.html'
+            }
+
+            // Загрузка данных при загрузке страницы
+            window.onload = loadTableData;
+        </script>
+
+    </main>
+    <footer>
+    </footer>
+    <!-- СЃСЋРґР° РјРѕР¶РЅРѕ РїРѕРґРєР»СЋС‡РёС‚СЊ jquery <script src="scripts/app.js" defer></script> -->
+</body>
+</html>

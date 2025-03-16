@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|c:\\users\\\u0435\u0433\u043E\u0440\\source\\repos\\shop\\server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|solutionrelative:server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|c:\\users\\\u0435\u0433\u043E\u0440\\source\\repos\\shop\\views\\main.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|solutionrelative:views\\main.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|c:\\users\\\u0435\u0433\u043E\u0440\\source\\repos\\shop\\views\\korzina.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|solutionrelative:views\\korzina.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|c:\\users\\\u0435\u0433\u043E\u0440\\source\\repos\\shop\\public\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BED7A9E2-798E-763B-7410-8928E9647315}|Shop.esproj|solutionrelative:public\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 197,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\public\\style.css",
+              "RelativeDocumentMoniker": "public\\style.css",
+              "ToolTip": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\public\\style.css",
+              "RelativeToolTip": "public\\style.css",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-13T15:25:54.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "korzina.html",
+              "DocumentMoniker": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\views\\korzina.html",
+              "RelativeDocumentMoniker": "views\\korzina.html",
+              "ToolTip": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\views\\korzina.html",
+              "RelativeToolTip": "views\\korzina.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-09T20:09:58.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.html",
+              "DocumentMoniker": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\views\\main.html",
+              "RelativeDocumentMoniker": "views\\main.html",
+              "ToolTip": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\views\\main.html",
+              "RelativeToolTip": "views\\main.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-09T20:07:39.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "server.js",
+              "DocumentMoniker": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\server.js",
+              "RelativeDocumentMoniker": "server.js",
+              "ToolTip": "C:\\Users\\\u0415\u0433\u043E\u0440\\source\\repos\\Shop\\server.js",
+              "RelativeToolTip": "server.js",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAcwIAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-03-08T16:59:36.874Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

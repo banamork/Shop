@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta property="og:title" content="Заголовок страницы в OG">
+    <meta property="og:description" content="Описание страницы в OG">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+</head>
+<body>
+    <script src="server.js"></script>
+    <header>
+        <!--Р­С‚Рѕ С€Р°РїРєР° СЃР°Р№С‚Р°-->
+        <h1>
+            ASTRO COMPUTERS
+            <button onclick="location.href='str_main.html'">
+                Заказы
+            </button>
+            </div>
+            <button onclick="location.href='sklad_i_zakupki.html'">
+                Склад и закупки
+            </button>
+            <button onclick="location.href='profile1.html'">
+                Профиль
+            </button>
+        </h1>
+
+    </header>
+    <main>
+        <div class="rectangle">
+            <ul>
+                <li>
+                    <label for="id">id:</label>
+                    <input type="text" name="id" placeholder="OIS*" id="id" required>
+                </li>
+                <li>
+                    <label for="zakaz">Заказ:</label>
+                    <input type="text" name="zakaz" placeholder="OTS*" id="zakaz" required>
+                </li>
+                <li>
+                    <label for="tovar">Товар:</label>
+                    <input type="text" name="tovar" placeholder="G*" id="tovar" required>
+                </li>
+                <li>
+                    <label for="kolichestvo">Количество:</label>
+                    <input type="text" name="kolichestvo" placeholder="*" id="kolichestvo" required>
+                </li>
+                <li>
+                    <label for="price">Цена закупки:</label>
+                    <input type="text" name="price" placeholder=".**" id="price" required>
+                </li>
+            </ul>
+            <button id="submitButton">Добавить в базу данных</button>
+        </div>
+        <script>
+            // Функция для отправки данных на сервер
+            async function saveOrder() {
+                const id = document.getElementById('id').value; // ID
+                const idOrder = document.getElementById('zakaz').value; // Заказ
+                const idGoods = document.getElementById('tovar').value; // Товар
+                const amount = parseInt(document.getElementById('kolichestvo').value); // Количество
+                const purchasePrice = parseFloat(document.getElementById('price').value); // Цена закупки
+
+                const order = {
+                    id: id,
+                    id_order: idOrder,
+                    id_goods: idGoods,
+                    amount: amount,
+                    purchase_price: purchasePrice
+                };
+
+                try {
+                    const response = await fetch('http://localhost:3000/api/orders-in-strings', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(order),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Ошибка при сохранении данных');
+                    }
+
+                    const result = await response.json();
+                    console.log(result.message);
+
+                    // Уведомление пользователю
+                    alert('Данные успешно добавлены в базу данных');
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при добавлении данных');
+                }
+            }
+
+            // Назначение обработчика события для кнопки
+            document.getElementById('submitButton').addEventListener('click', saveOrder);
+        </script>

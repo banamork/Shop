@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta property="og:title" content="Заголовок страницы в OG">
+    <meta property="og:description" content="Описание страницы в OG">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+  </head>
+  <body>
+      <script src="server.js"></script>
+      <header>
+          <h1>
+              ASTRO COMPUTERS
+              <button onclick="location.href='main.html'">
+                  Главная
+              </button>
+              <div class="dropdown">
+                  <button onclick="myFunction()" class="dropbtn">
+                      Категории
+                      <div id="myDropdown" class="dropdown-content">
+                          <a href="main.html">Видеокарты</a>
+                          <a href="main.html">Вентиляторы</a>
+                          <a href="main.html">Адаптеры</a>
+                          <a href="main.html">Приводы</a>
+                      </div>
+                  </button>
+              </div>
+              <button>
+                  Корзина
+              </button>
+              <button onclick="location.href='profile.html'">
+                  Профиль
+              </button>
+          </h1>
+      </header>
+      <main>
+          <table>
+              <tr>
+                  <th width="15%">Наименование товара</th>
+                  <th width="15%">Цена</th>
+                  <th width="12%">Описание</th>
+                  <th width="13%">Производитель</th>
+                  <th width="15%">Поставщик</th>
+                  <th width="15%">Категория</th>
+              </tr>
+              <tbody id="cart-body">
+                  <tr>
+                      <td colspan="6">Корзина пуста</td>
+                  </tr>
+              </tbody>
+          </table>
+
+          <script>
+              // Функция для отображения товаров в корзине
+              function displayCart() {
+                  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                  const cartBody = document.getElementById('cart-body');
+                  cartBody.innerHTML = ''; // Очистка таблицы
+
+                  if (cart.length > 0) {
+                      cart.forEach(item => {
+                          const tr = document.createElement('tr');
+                          tr.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.sell_price}</td>
+                    <td>${item.width}</td>
+                    <td>${item.manufacturer}</td>
+                    <td>${item.company}</td>
+                    <td>${item.id_category}</td>
+                `;
+                          cartBody.appendChild(tr);
+                      });
+                  } else {
+                      cartBody.innerHTML = `
+                <tr>
+                    <td colspan="6">Корзина пуста</td>
+                </tr>
+            `;
+                  }
+              }
+
+              // Функция для очистки корзины и перенаправления
+              function clearCartAndRedirect() {
+                  // Очистка localStorage
+                  localStorage.removeItem('cart');
+
+                  // Обновление отображения корзины
+                  displayCart();
+              }
+
+              // Отображение корзины при загрузке страницы
+              window.onload = displayCart;
+          </script>
+          <input type="text" name="adress" placeholder="Адрес доставки:" id="addressInput" required>
+          <button onclick="clearCartAndRedirect()" style="background-color: #f89b0b;">
+              Обновить
+          </button>
+      </main>
+      <footer>
+      </footer>
+  </body>
+</html>

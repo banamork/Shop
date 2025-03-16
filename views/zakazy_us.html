@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta property="og:title" content="Заголовок страницы в OG">
+    <meta property="og:description" content="Описание страницы в OG">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+  </head>
+  <body>
+      <script src="server.js"></script>
+      <header>
+          <!--Р­С‚Рѕ С€Р°РїРєР° СЃР°Р№С‚Р°-->
+          <h1>
+              ASTRO COMPUTERS
+              <button>
+                  Заказы
+              </button>
+              </button>
+              </div>
+              <button onclick="location.href='sklad_i_zakupki.html'">
+                  Склад и закупки
+              </button>
+              <button onclick="location.href='profile1.html'">
+                  Профиль
+              </button>
+          </h1>
+
+      </header>
+      <main>
+
+          <button onclick="location.href='str_main.html'" style="display: block; margin-left: auto; margin-right: auto; left:-200px; top:30px;">
+              Заказы поставщикам
+          </button>
+          <button style="display: block; margin-left: auto; margin-right: auto; left:210px; top:-50px;">
+              Заказы клиентов
+          </button>
+          <table>
+              <tr>
+                  <th width="15%">Номер заказа</th>
+                  <th width="45%">Пользователь</th>
+                  <th width="12%">Дата</th>
+                  <th width="13%">Адрес</th>
+                  <th width="15%">Статус</th>
+              </tr>
+              <tbody id="table-body">
+                  <tr>
+                      <td colspan="5">Загрузка...</td>
+                  </tr>
+              </tbody>
+          </table>
+
+          <script>
+              // Функция для загрузки данных с сервера
+              async function loadTableData() {
+                  try {
+                      const response = await fetch('http://localhost:3000/api/usersorders'); // Изменен путь на /api/usersorders
+                      const data = await response.json();
+
+                      const tableBody = document.getElementById('table-body');
+                      tableBody.innerHTML = ''; // Очистка таблицы
+
+                      if (data.length > 0) {
+                          data.forEach(row => {
+                              const tr = document.createElement('tr');
+                              tr.innerHTML = `
+                                      <td>${row.id}</td>
+                                      <td>${row.id_user}</td>
+                                      <td>${new Date(row.date).toLocaleDateString()}</td>
+                                      <td>${row.address}</td>
+                                      <td>${row.status}</td>
+                                  `;
+                              tableBody.appendChild(tr);
+                          });
+                      } else {
+                          tableBody.innerHTML = `
+                                  <tr>
+                                      <td colspan="5">Нет данных</td>
+                                  </tr>
+                              `;
+                      }
+                  } catch (error) {
+                      console.error('Ошибка при загрузке данных:', error);
+                      document.getElementById('table-body').innerHTML = `
+                              <tr>
+                                  <td colspan="5">Ошибка загрузки данных</td>
+                              </tr>
+                          `;
+                  }
+              }
+              // Загрузка данных при загрузке страницы
+              window.onload = loadTableData;
+          </script>
+
+      </main>
+      <footer>
+      </footer>
+      <!-- СЃСЋРґР° РјРѕР¶РЅРѕ РїРѕРґРєР»СЋС‡РёС‚СЊ jquery <script src="scripts/app.js" defer></script> -->
+  </body>
+</html>

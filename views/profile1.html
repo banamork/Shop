@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заголовок страницы</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta property="og:title" content="Заголовок страницы в OG">
+    <meta property="og:description" content="Описание страницы в OG">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+</head>
+<body>
+    <script src="server.js"></script>
+    <header>
+        <h1>
+            ASTRO COMPUTERS
+            <button onclick="location.href='str_main.html'">
+                Заказы
+            </button>
+
+            <button onclick="location.href='sklad_i_zakupki.html'">
+                Склад и закупки
+            </button>
+            <button onclick="location.href='profile1.html'">
+                Профиль
+            </button>
+        </h1>
+    </header>
+    <main>
+        <img src="user.jpg" width="300" height="350" style="transform: translate(120px,60px);"></img>
+        <p style="transform: translate(430px,-290px); font-size: 48px;">
+            <span id="username">????</span>
+        </p>
+
+        <script>
+            // Извлечение имени пользователя из localStorage
+            const username = localStorage.getItem('username');
+
+            // Проверка, получили ли мы имя пользователя
+            if (username) {
+                document.getElementById('username').textContent = username;
+            } else {
+                // Обработка случая, если имя пользователя не найдено
+                document.getElementById('username').textContent = "Работник";
+            }
+        </script>
+        <button onclick="location.href='vxod.html'" style="transform: translate(430px,-290px);">
+            Авторизоваться?
+        </button>
+        <p style="transform: translate(10px,60px);">История заказов: </p>
+    </main>
+    <footer>
+    </footer>
+    <!-- сюда можно подключить jquery <script src="scripts/app.js" defer></script> -->
+</body>
+</html>
